@@ -175,6 +175,7 @@ function toPrintPayload(check) {
   return {
     payee: check.payee,
     mailingAddress: check.mailingAddress,
+    bankAccount: check.bankAccount,
     checkNo: (check.checkNo || "").replace(/[^0-9]/g, ""),
     date: check.date,
     memo: check.memo,

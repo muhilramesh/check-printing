@@ -23,37 +23,31 @@ const BANK = {
 //  Tweak here, or use the on-screen nudge arrows to calibrate.
 const POS = {
   // --- Check face (top panel) ---
-  checkNo:     { left: 7.55, top: 0.42, w: 0.9,  align: "right", size: 11, bold: true },
-  checkDate:   { left: 6.55, top: 1.28, w: 1.5,  align: "left",  size: 10 },
+  checkNo:     { left: 7.80, top: 0.42, w: 0.65, align: "right", size: 11, bold: true },
+  checkDate:   { left: 6.55, top: 1.05, w: 1.6,  align: "center", size: 10 },
   payee:       { left: 1.45, top: 1.52, w: 5.4,  align: "left",  size: 11 },
   amountBox:   { left: 7.00, top: 1.50, w: 1.35, align: "right", size: 11, bold: true },
-  mailingAddr: { left: 0.45, top: 2.05, w: 3.5,  align: "left",  size: 9 },
-  memo:        { left: 0.80, top: 2.86, w: 3.6,  align: "left",  size: 9 },
-  checkAmount: { left: 7.00, top: 2.74, w: 1.35, align: "right", size: 10 },
-
-  detailTop: 2.50,   // first detail data row (check face)
-  detailRowH: 0.17,
+  amountWords: { left: 0.55, top: 1.92, w: 7.2,  align: "left",  size: 10 },
+  mailingAddr: { left: 1.45, top: 2.22, w: 3.5,  align: "left",  size: 10 },
+  memo:        { left: 0.80, top: 3.00, w: 3.6,  align: "left",  size: 9 },
 
   // --- Stub 1 (middle panel) ---
-  stub1Payee:  { left: 0.20, top: 5.55, w: 5.0,  align: "left",  size: 11 },
-  stub1Amount: { left: 6.85, top: 5.55, w: 1.5,  align: "right", size: 11 },
-  stub1Memo:   { left: 1.45, top: 6.32, w: 4.0,  align: "left",  size: 10 },
+  stub1Addr:   { left: 0.90, top: 3.98, w: 3.2,  align: "left",  size: 10 },
+  stub1Memo:   { left: 3.35, top: 4.12, w: 2.4,  align: "left",  size: 10 },
+  stub1Date:   { left: 5.90, top: 3.98, w: 1.3,  align: "left",  size: 10 },
+  stub1Amount: { left: 6.85, top: 4.18, w: 1.5,  align: "right", size: 10 },
+  stub1Bank:   { left: 0.20, top: 6.55, w: 2.0,  align: "left",  size: 10 },
+  stub1Memo2:  { left: 2.30, top: 6.55, w: 2.6,  align: "left",  size: 10 },
+  stub1Amount2:{ left: 6.85, top: 6.55, w: 1.5,  align: "right", size: 10 },
 
   // --- Stub 2 (bottom panel) ---
-  stub2Payee:  { left: 0.20, top: 9.05, w: 5.0,  align: "left",  size: 11 },
-  stub2Amount: { left: 6.85, top: 9.05, w: 1.5,  align: "right", size: 11 },
-  stub2Memo:   { left: 1.45, top: 9.82, w: 4.0,  align: "left",  size: 10 },
-};
-
-// Detail-table column x positions (check face), in inches
-const COLS = {
-  date:     { left: 0.30, w: 0.90, align: "left" },
-  type:     { left: 1.22, w: 0.62, align: "left" },
-  ref:      { left: 1.88, w: 2.25, align: "left" },
-  origAmt:  { left: 4.05, w: 1.00, align: "right" },
-  balDue:   { left: 5.10, w: 1.00, align: "right" },
-  discount: { left: 6.10, w: 0.85, align: "right" },
-  payment:  { left: 7.00, w: 0.95, align: "right" },
+  stub2Addr:   { left: 0.90, top: 7.48, w: 3.2,  align: "left",  size: 10 },
+  stub2Memo:   { left: 3.35, top: 7.62, w: 2.4,  align: "left",  size: 10 },
+  stub2Date:   { left: 5.90, top: 7.48, w: 1.3,  align: "left",  size: 10 },
+  stub2Amount: { left: 6.85, top: 7.68, w: 1.5,  align: "right", size: 10 },
+  stub2Bank:   { left: 0.20, top: 10.05, w: 2.0, align: "left",  size: 10 },
+  stub2Memo2:  { left: 2.30, top: 10.05, w: 2.6, align: "left",  size: 10 },
+  stub2Amount2:{ left: 6.85, top: 10.05, w: 1.5, align: "right", size: 10 },
 };
 
 // ---- Helpers ----
@@ -124,15 +118,14 @@ function loadData() {
   if (!data) {
     // Sample matching the photo, so the page is viewable on its own
     data = {
-      payee: "Huntington Bank",
-      mailingAddress: "Olson Oil",
-      checkNo: "1566",
-      date: "2020-06-16",
-      memo: "",
-      total: 2219.28,
-      lines: [
-        { type: "Bill", ref: "", date: "6/16/2020", amount: 2219.28 },
-      ],
+      payee: "29834 10th Ave SW",
+      mailingAddress: "29834 10th Ave SW\nFederal Way\nWA 98023",
+      bankAccount: "Huntington Bank",
+      checkNo: "1620",
+      date: "2020-08-18",
+      memo: "8/2/2020 - 8/15/2020",
+      total: 1080.0,
+      lines: [],
     };
   }
   return data;
@@ -166,46 +159,37 @@ function renderOverlay(data) {
   const dateStr = fmtDate(data.date);
   const amt = money(data.total);
 
+  const bank = data.bankAccount || "Huntington Bank";
+
   // check face
   layer.appendChild(el("ov", POS.checkNo, data.checkNo || ""));
   layer.appendChild(el("ov", POS.checkDate, dateStr));
   layer.appendChild(el("ov", POS.payee, data.payee || ""));
-  layer.appendChild(el("ov", POS.amountBox, amt));
+  layer.appendChild(el("ov", POS.amountBox, "**" + amt));
+  layer.appendChild(el("ov", POS.amountWords, numberToWords(data.total)));
   if (data.mailingAddress) {
-    const addr = el("ov multiline", POS.mailingAddr, data.mailingAddress);
-    layer.appendChild(addr);
+    layer.appendChild(el("ov multiline", POS.mailingAddr, data.mailingAddress));
   }
   if (data.memo) layer.appendChild(el("ov", POS.memo, data.memo));
-  layer.appendChild(el("ov", POS.checkAmount, amt));
 
-  // detail rows (check face) from line items
-  (data.lines || []).forEach((ln, i) => {
-    const top = POS.detailTop + i * POS.detailRowH;
-    const rowCols = {
-      date: ln.date || dateStr,
-      type: ln.type || "",
-      ref: ln.ref || ln.description || "",
-      origAmt: money(ln.amount),
-      balDue: money(ln.amount),
-      discount: "",
-      payment: money(ln.amount),
-    };
-    Object.keys(COLS).forEach((key) => {
-      const c = COLS[key];
-      layer.appendChild(
-        el("ov small", { left: c.left, top, w: c.w, align: c.align, size: 9 }, rowCols[key])
-      );
-    });
+  // stubs — address under company name, memo + date + amount,
+  // then bank / memo / amount along the bottom of each stub
+  [
+    { addr: POS.stub1Addr, memo: POS.stub1Memo, date: POS.stub1Date, amount: POS.stub1Amount,
+      bank: POS.stub1Bank, memo2: POS.stub1Memo2, amount2: POS.stub1Amount2 },
+    { addr: POS.stub2Addr, memo: POS.stub2Memo, date: POS.stub2Date, amount: POS.stub2Amount,
+      bank: POS.stub2Bank, memo2: POS.stub2Memo2, amount2: POS.stub2Amount2 },
+  ].forEach((s) => {
+    if (data.mailingAddress) {
+      layer.appendChild(el("ov multiline", s.addr, data.mailingAddress));
+    }
+    if (data.memo) layer.appendChild(el("ov", s.memo, data.memo));
+    layer.appendChild(el("ov", s.date, dateStr));
+    layer.appendChild(el("ov", s.amount, amt));
+    layer.appendChild(el("ov", s.bank, bank));
+    if (data.memo) layer.appendChild(el("ov", s.memo2, data.memo));
+    layer.appendChild(el("ov", s.amount2, amt));
   });
-
-  // stubs
-  layer.appendChild(el("ov", POS.stub1Payee, data.payee || ""));
-  layer.appendChild(el("ov", POS.stub1Amount, amt));
-  if (data.memo) layer.appendChild(el("ov", POS.stub1Memo, data.memo));
-
-  layer.appendChild(el("ov", POS.stub2Payee, data.payee || ""));
-  layer.appendChild(el("ov", POS.stub2Amount, amt));
-  if (data.memo) layer.appendChild(el("ov", POS.stub2Memo, data.memo));
 }
 
 function renderGuide(data) {
@@ -233,14 +217,8 @@ function renderGuide(data) {
   add(0.15, 1.42, 2, "PAY TO THE<br>ORDER OF");
   add(6.85, 1.5, 0.2, "$");
   add(7.55, 1.95, 0.9, "DOLLARS", "rt");
-  add(0.15, 2.86, 0.6, "MEMO");
+  add(0.15, 3.00, 0.6, "MEMO");
   add(6.4, 2.95, 1.6, "AUTHORIZED SIGNATURE", "rt small");
-  // detail header
-  ["Date", "Type", "Reference", "Original Amt.", "Balance Due", "Discount", "Payment"]
-    .forEach((h, i) => {
-      const c = Object.values(COLS)[i];
-      add(c.left, 2.30, c.w, h, "small " + (c.align === "right" ? "rt" : ""));
-    });
   // MICR  —  ⑈checkNo⑈  ⑆routing⑆  account⑈   (on-us = U+2448, transit = U+2446)
   const micrCheckNo = (data.checkNo || "").replace(/\D/g, "").padStart(6, "0");
   add(1.2, 3.15, 6, `&#x2448;${micrCheckNo}&#x2448; ` +
@@ -248,10 +226,8 @@ function renderGuide(data) {
   // stub headers
   add(0.20, 3.70, 3, `<b>${COMPANY.name}</b>`);
   add(7.6, 3.70, 0.9, data.checkNo || "", "rt");
-  add(0.85, 6.32, 1, "Memo:");
   add(0.20, 7.20, 3, `<i>${COMPANY.name}</i>`);
   add(7.6, 7.20, 0.9, data.checkNo || "", "rt");
-  add(0.85, 9.82, 1, "Memo:");
 }
 
 // ---- Calibration (global nudge, persisted) ----
