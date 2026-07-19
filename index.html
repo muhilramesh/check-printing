@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check</title>
+  <script src="auth.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="check-window">
+    <!-- Header -->
+    <header class="cw-header">
+      <div class="cw-title">
+        <a class="history-icon" href="checks.html" title="Saved checks">&#10227;</a>
+        <h1>Check <span class="muted">#<span id="checkNoTitle">To print</span></span></h1>
+      </div>
+      <div class="cw-header-right">
+        <button class="link-btn" type="button" onclick="crcLogout()">Sign out</button>
+        <button class="icon-btn" type="button" title="Help">&#9737;</button>
+        <button class="icon-btn close" type="button" title="Close">&times;</button>
+      </div>
+    </header>
+
+    <div class="cw-body">
+      <!-- Top section -->
+      <section class="top-grid">
+        <div class="field payee-field">
+          <label>Payee</label>
+          <div class="select-wrap">
+            <input id="payee" type="text" placeholder="Who did you pay?" autocomplete="off" />
+            <span class="caret">&#9662;</span>
+          </div>
+          <label class="mt">Mailing address</label>
+          <textarea id="mailingAddress" rows="5" class="address-box"></textarea>
+        </div>
+
+        <div class="field bank-field">
+          <label>Bank Account</label>
+          <div class="select-wrap">
+            <select id="bankAccount">
+              <option value="Huntington Bank" data-balance="146636.36">Huntington Bank</option>
+            </select>
+          </div>
+
+          <div class="sub-grid mt">
+            <div class="field">
+              <label>Payment date</label>
+              <div class="date-wrap">
+                <input id="paymentDate" type="date" />
+              </div>
+            </div>
+            <div class="field">
+              <label>Check no.</label>
+              <input id="checkNo" type="text" value="To print" />
+              <label class="checkbox-row">
+                <input id="printLater" type="checkbox" checked />
+                <span>Print later</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="amount-box">
+          <label>AMOUNT</label>
+          <div class="amount-value" id="amountDisplay">$0.00</div>
+        </div>
+      </section>
+
+      <div class="collapse-bar"><button class="icon-btn" type="button" title="Collapse">&#9650;</button></div>
+
+      <!-- Line items -->
+      <section class="lines-section">
+        <table class="lines-table">
+          <thead>
+            <tr>
+              <th class="col-grip"></th>
+              <th class="col-num">#</th>
+              <th class="col-cat">CATEGORY</th>
+              <th class="col-desc">DESCRIPTION</th>
+              <th class="col-amt">AMOUNT</th>
+              <th class="col-actions"></th>
+            </tr>
+          </thead>
+          <tbody id="lineBody"><!-- rows injected by JS --></tbody>
+        </table>
+
+        <div class="lines-controls">
+          <button id="addLines" class="btn" type="button">Add lines</button>
+          <button id="clearLines" class="btn" type="button">Clear all lines</button>
+          <div class="total-row">
+            <span>Total</span>
+            <span id="linesTotal">$0.00</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Memo + attachments -->
+      <section class="memo-grid">
+        <div class="field">
+          <label>Memo</label>
+          <textarea id="memo" rows="4" class="memo-box"></textarea>
+        </div>
+        <div class="field">
+          <label>Attachments</label>
+          <div class="attach-drop">
+            <button class="link-btn strong" type="button">Add attachment</button>
+            <div class="muted small">Max file size: 20 MB</div>
+            <button class="link-btn" type="button">Show existing</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="cw-footer">
+      <div class="footer-left">
+        <button class="btn ghost" type="button" id="cancelBtn">Cancel</button>
+        <span class="footer-links">
+          <a href="#" id="printCheck">Print check</a>
+          <a href="checks.html">Saved checks</a>
+          <a href="#">Order checks</a>
+        </span>
+      </div>
+      <div class="footer-right">
+        <button class="btn" type="button" id="saveBtn">Save</button>
+        <div class="split-btn">
+          <button class="btn primary" type="button" id="saveCloseBtn">Save and close</button>
+          <button class="btn primary caret-btn" type="button" id="saveMenuBtn">&#9662;</button>
+        </div>
+        <div class="save-menu" id="saveMenu" hidden>
+          <button type="button" id="saveNewBtn">Save and new</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Print check</title>
+  <script src="auth.js"></script>
+  <link rel="stylesheet" href="print.css" />
+</head>
+<body>
+  <!-- Calibration toolbar (screen only) -->
+  <div class="toolbar" id="toolbar">
+    <a class="back" href="index.html">&larr; Back to check</a>
+    <a class="back newcheck" href="index.html" id="newCheckLink">+ New check</a>
+    <span class="tb-group">
+      <strong>Align:</strong>
+      <button id="nLeft" title="Move left">&#9664;</button>
+      <button id="nUp" title="Move up">&#9650;</button>
+      <button id="nDown" title="Move down">&#9660;</button>
+      <button id="nRight" title="Move right">&#9654;</button>
+      <button id="nReset" title="Reset">Reset</button>
+      <span id="offsetLabel" class="offset">X 0.00″  Y 0.00″</span>
+    </span>
+    <span class="tb-group">
+      <button id="toggleGuide">Hide guide</button>
+      <button id="printBtn" class="primary">Print</button>
+    </span>
+  </div>
+
+  <!-- 8.5 x 11 sheet -->
+  <div class="sheet">
+    <div class="guide" id="guide"></div>     <!-- faint pre-printed reference, screen only -->
+    <div class="overlay" id="overlay"></div> <!-- the data we actually print -->
+  </div>
+
+  <script src="print.js"></script>
+</body>
+</html>

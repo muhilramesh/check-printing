@@ -1,0 +1,97 @@
+@page {
+  size: letter;
+  margin: 0;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #e9ebee;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+}
+
+/* ---------- Toolbar (screen only) ---------- */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 10px 16px;
+  background: #fff;
+  border-bottom: 1px solid #d4d7dc;
+  font-size: 13px;
+}
+.toolbar .back { color: #2ca01c; text-decoration: none; font-weight: 600; }
+.toolbar .back:hover { text-decoration: underline; }
+.toolbar .newcheck { color: #6b6c72; }
+.tb-group { display: flex; align-items: center; gap: 6px; }
+.toolbar button {
+  border: 1px solid #d4d7dc; background: #fff; border-radius: 4px;
+  padding: 5px 9px; cursor: pointer; font-size: 13px; min-width: 30px;
+}
+.toolbar button:hover { background: #f4f5f8; }
+.toolbar button.primary { background: #2ca01c; border-color: #2ca01c; color: #fff; font-weight: 600; }
+.toolbar .offset { margin-left: 8px; color: #6b6c72; font-variant-numeric: tabular-nums; }
+
+/* ---------- Sheet ---------- */
+.sheet {
+  position: relative;
+  width: 8.5in;
+  height: 11in;
+  margin: 20px auto;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,.15);
+}
+
+/* ---------- Overlay (the real printed data) ---------- */
+.overlay { position: absolute; inset: 0; }
+.overlay .ov {
+  position: absolute;
+  font-size: 10pt;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.overlay .ov.small { font-size: 9pt; }
+.overlay .ov.multiline { white-space: pre-line; line-height: 1.25; }
+
+/* ---------- Guide (faint pre-printed reference) ---------- */
+.guide { position: absolute; inset: 0; color: #9aa0a6; }
+.guide .gd {
+  position: absolute;
+  font-size: 10pt;
+  line-height: 1.25;
+}
+.guide .gd.small { font-size: 7.5pt; letter-spacing: .2px; }
+.guide .gd.rt { text-align: right; }
+.guide .gd.micr {
+  font-family: "Courier New", monospace;
+  font-size: 12pt;
+  letter-spacing: 2px;
+}
+.guide .gd.sep {
+  border-top: 1px dashed #c9ced6;
+  height: 0;
+  font-size: 0;
+}
+
+/* hide guide toggle */
+body.hide-guide .guide { display: none; }
+
+/* ---------- Print ---------- */
+@media print {
+  html, body { background: #fff; }
+  .toolbar { display: none !important; }
+  .guide { display: none !important; }
+  .sheet {
+    margin: 0;
+    box-shadow: none;
+    width: 8.5in;
+    height: 11in;
+  }
+}
