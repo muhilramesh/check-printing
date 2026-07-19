@@ -191,8 +191,10 @@ function toPrintPayload(check) {
 
 document.getElementById("printCheck").addEventListener("click", (e) => {
   e.preventDefault();
-  const check = gatherCheck();
-  localStorage.setItem("checkPrintData", JSON.stringify(toPrintPayload(check)));
+  // Auto-save first so every printed check shows up in the register/reports.
+  const saved = saveCheck();
+  if (!saved) return; // validation failed (toast already shown)
+  localStorage.setItem("checkPrintData", JSON.stringify(toPrintPayload(saved)));
   saveDraft(); // so "Back to check" restores the same form
   window.location.href = "print.html";
 });

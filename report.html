@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check Report</title>
+  <script src="auth.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="report.css" />
+</head>
+<body>
+  <div class="check-window">
+    <header class="cw-header no-print">
+      <div class="cw-title">
+        <a class="history-icon" href="checks.html" title="Saved checks">&#10227;</a>
+        <h1>Check Report</h1>
+      </div>
+      <div class="cw-header-right">
+        <button class="link-btn" type="button" onclick="crcLogout()">Sign out</button>
+        <a class="btn" href="checks.html">Saved checks</a>
+        <a class="btn" href="index.html">+ New check</a>
+      </div>
+    </header>
+
+    <div class="register-body">
+      <!-- Controls (screen only) -->
+      <div class="report-controls no-print">
+        <div class="rc-field">
+          <label>Period</label>
+          <select id="periodSelect">
+            <option value="thisYear">This year</option>
+            <option value="lastYear">Last year</option>
+            <option value="all">All time</option>
+            <option value="custom">Custom range</option>
+          </select>
+        </div>
+        <div class="rc-field custom-range" id="customRange" hidden>
+          <label>From</label>
+          <input type="date" id="fromDate" />
+        </div>
+        <div class="rc-field custom-range" id="customRange2" hidden>
+          <label>To</label>
+          <input type="date" id="toDate" />
+        </div>
+        <div class="rc-field">
+          <label>Group</label>
+          <select id="groupSelect">
+            <option value="none">No grouping</option>
+            <option value="payee">By payee</option>
+            <option value="month">By month</option>
+          </select>
+        </div>
+        <button class="btn primary" id="printReportBtn" type="button">Print report</button>
+      </div>
+
+      <!-- Report (printed) -->
+      <div id="reportArea">
+        <div class="report-header">
+          <div>
+            <h2>Viking CRC Inc</h2>
+            <div class="muted">Check Register Report</div>
+            <div class="muted" id="periodLabel"></div>
+          </div>
+          <div class="report-meta">
+            <div class="muted small">Generated <span id="generatedDate"></span></div>
+          </div>
+        </div>
+
+        <div id="reportBody"></div>
+
+        <div class="report-summary" id="reportSummary"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="report.js"></script>
+</body>
+</html>
