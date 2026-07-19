@@ -180,9 +180,7 @@ function renderOverlay(data) {
     { addr: POS.stub2Addr, memo: POS.stub2Memo, date: POS.stub2Date, amount: POS.stub2Amount,
       bank: POS.stub2Bank, memo2: POS.stub2Memo2, amount2: POS.stub2Amount2 },
   ].forEach((s) => {
-    if (data.mailingAddress) {
-      layer.appendChild(el("ov multiline", s.addr, data.mailingAddress));
-    }
+    if (data.payee) layer.appendChild(el("ov", s.addr, data.payee));
     if (data.memo) layer.appendChild(el("ov", s.memo, data.memo));
     layer.appendChild(el("ov", s.date, dateStr));
     layer.appendChild(el("ov", s.amount, amt));
