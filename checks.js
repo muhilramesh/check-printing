@@ -72,7 +72,7 @@ function render() {
       <div class="empty-state">
         <h2>No saved checks yet</h2>
         <p>Checks you save will show up here.</p>
-        <p><a class="btn primary" href="index.html">+ New check</a></p>
+        <p><a class="btn primary" href="index.html?new=1">+ New check</a></p>
       </div>`;
     return;
   }

@@ -304,8 +304,8 @@ function resetForm() {
   document.getElementById("payee").value = "";
   document.getElementById("mailingAddress").value = "";
   document.getElementById("memo").value = "";
-  document.getElementById("printLater").checked = true;
-  document.getElementById("checkNo").value = "To print";
+  document.getElementById("printLater").checked = false;
+  document.getElementById("checkNo").value = "";
   checkNoTitle.textContent = "To print";
   document.getElementById("paymentDate").value = new Date().toISOString().slice(0, 10);
   lineBody.innerHTML = "";
@@ -379,6 +379,13 @@ function populateForm(check, editId) {
 
 // ---- Init ----
 document.getElementById("paymentDate").value = new Date().toISOString().slice(0, 10);
+
+// "?new=1" — explicit New check: discard any draft/edit state and start blank
+if (new URLSearchParams(location.search).get("new") === "1") {
+  localStorage.removeItem("editCheckId");
+  clearDraft();
+  history.replaceState(null, "", "index.html"); // clean the URL
+}
 
 const editId = localStorage.getItem("editCheckId");
 let draft = null;
