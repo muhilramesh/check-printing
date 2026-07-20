@@ -1,5 +1,6 @@
 // ---- Category options (QuickBooks-style expense accounts) ----
 const CATEGORIES = [
+  "Advertising",
   "Auto and Truck Expenses",
   "Bank Service Charges",
   "Bill",
@@ -9,6 +10,7 @@ const CATEGORIES = [
   "Depreciation Expense", 
   "Insurance Expense",
   "Interest Expense",
+  "Marketing",
   "Meals and Entertainment",
   "Office Supplies",
   "Payroll Expenses",
