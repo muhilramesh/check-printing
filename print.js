@@ -24,7 +24,7 @@ const BANK = {
 const POS = {
   // --- Check face (top panel) ---
   checkNo:     { left: 7.80, top: 0.32, w: 0.65, align: "right", size: 11, bold: true },
-  checkDate:   { left: 6.55, top: 0.95, w: 1.6,  align: "center", size: 10 },
+  checkDate:   { left: 6.55, top: 0.85, w: 1.6,  align: "center", size: 10 },
   payee:       { left: 1.45, top: 1.32, w: 5.4,  align: "left",  size: 11 },
   amountBox:   { left: 6.80, top: 1.40, w: 1.35, align: "right", size: 11, bold: true },
   amountWords: { left: 0.55, top: 1.63, w: 7.2,  align: "left",  size: 10 },
