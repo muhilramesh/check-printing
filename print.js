@@ -23,31 +23,31 @@ const BANK = {
 //  Tweak here, or use the on-screen nudge arrows to calibrate.
 const POS = {
   // --- Check face (top panel) ---
-  checkNo:     { left: 7.80, top: 0.42, w: 0.65, align: "right", size: 11, bold: true },
-  checkDate:   { left: 6.55, top: 1.05, w: 1.6,  align: "center", size: 10 },
-  payee:       { left: 1.45, top: 1.52, w: 5.4,  align: "left",  size: 11 },
-  amountBox:   { left: 7.00, top: 1.50, w: 1.35, align: "right", size: 11, bold: true },
-  amountWords: { left: 0.55, top: 1.92, w: 7.2,  align: "left",  size: 10 },
-  mailingAddr: { left: 1.45, top: 2.22, w: 3.5,  align: "left",  size: 10 },
-  memo:        { left: 0.80, top: 3.00, w: 3.6,  align: "left",  size: 9 },
+  checkNo:     { left: 7.80, top: 0.32, w: 0.65, align: "right", size: 11, bold: true },
+  checkDate:   { left: 6.55, top: 0.95, w: 1.6,  align: "center", size: 10 },
+  payee:       { left: 1.45, top: 1.42, w: 5.4,  align: "left",  size: 11 },
+  amountBox:   { left: 6.80, top: 1.40, w: 1.35, align: "right", size: 11, bold: true },
+  amountWords: { left: 0.55, top: 1.75, w: 7.2,  align: "left",  size: 10 },
+  mailingAddr: { left: 1.45, top: 2.12, w: 3.5,  align: "left",  size: 10 },
+  memo:        { left: 0.80, top: 2.90, w: 3.6,  align: "left",  size: 9 },
 
   // --- Stub 1 (middle panel) ---
-  stub1Addr:   { left: 0.90, top: 3.98, w: 3.2,  align: "left",  size: 10 },
-  stub1Memo:   { left: 3.35, top: 4.12, w: 2.4,  align: "left",  size: 10 },
-  stub1Date:   { left: 5.90, top: 3.98, w: 1.3,  align: "left",  size: 10 },
-  stub1Amount: { left: 6.85, top: 4.18, w: 1.5,  align: "right", size: 10 },
-  stub1Bank:   { left: 0.20, top: 6.55, w: 2.0,  align: "left",  size: 10 },
-  stub1Memo2:  { left: 2.30, top: 6.55, w: 2.6,  align: "left",  size: 10 },
-  stub1Amount2:{ left: 6.85, top: 6.55, w: 1.5,  align: "right", size: 10 },
+  stub1Addr:   { left: 0.90, top: 3.88, w: 3.2,  align: "left",  size: 10 },
+  stub1Memo:   { left: 3.35, top: 4.02, w: 2.4,  align: "left",  size: 10 },
+  stub1Date:   { left: 5.90, top: 3.88, w: 1.3,  align: "left",  size: 10 },
+  stub1Amount: { left: 6.85, top: 4.08, w: 1.5,  align: "right", size: 10 },
+  stub1Bank:   { left: 0.20, top: 6.45, w: 2.0,  align: "left",  size: 10 },
+  stub1Memo2:  { left: 2.30, top: 6.45, w: 2.6,  align: "left",  size: 10 },
+  stub1Amount2:{ left: 6.85, top: 6.45, w: 1.5,  align: "right", size: 10 },
 
   // --- Stub 2 (bottom panel) ---
-  stub2Addr:   { left: 0.90, top: 7.48, w: 3.2,  align: "left",  size: 10 },
-  stub2Memo:   { left: 3.35, top: 7.62, w: 2.4,  align: "left",  size: 10 },
-  stub2Date:   { left: 5.90, top: 7.48, w: 1.3,  align: "left",  size: 10 },
-  stub2Amount: { left: 6.85, top: 7.68, w: 1.5,  align: "right", size: 10 },
-  stub2Bank:   { left: 0.20, top: 10.05, w: 2.0, align: "left",  size: 10 },
-  stub2Memo2:  { left: 2.30, top: 10.05, w: 2.6, align: "left",  size: 10 },
-  stub2Amount2:{ left: 6.85, top: 10.05, w: 1.5, align: "right", size: 10 },
+  stub2Addr:   { left: 0.90, top: 7.38, w: 3.2,  align: "left",  size: 10 },
+  stub2Memo:   { left: 3.35, top: 7.52, w: 2.4,  align: "left",  size: 10 },
+  stub2Date:   { left: 5.90, top: 7.38, w: 1.3,  align: "left",  size: 10 },
+  stub2Amount: { left: 6.85, top: 7.58, w: 1.5,  align: "right", size: 10 },
+  stub2Bank:   { left: 0.20, top: 9.95, w: 2.0,  align: "left",  size: 10 },
+  stub2Memo2:  { left: 2.30, top: 9.95, w: 2.6,  align: "left",  size: 10 },
+  stub2Amount2:{ left: 6.85, top: 9.95, w: 1.5,  align: "right", size: 10 },
 };
 
 // ---- Helpers ----
