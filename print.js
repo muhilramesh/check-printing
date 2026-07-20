@@ -25,9 +25,9 @@ const POS = {
   // --- Check face (top panel) ---
   checkNo:     { left: 7.80, top: 0.32, w: 0.65, align: "right", size: 11, bold: true },
   checkDate:   { left: 6.55, top: 0.95, w: 1.6,  align: "center", size: 10 },
-  payee:       { left: 1.45, top: 1.42, w: 5.4,  align: "left",  size: 11 },
+  payee:       { left: 1.45, top: 1.32, w: 5.4,  align: "left",  size: 11 },
   amountBox:   { left: 6.80, top: 1.40, w: 1.35, align: "right", size: 11, bold: true },
-  amountWords: { left: 0.55, top: 1.75, w: 7.2,  align: "left",  size: 10 },
+  amountWords: { left: 0.55, top: 1.63, w: 7.2,  align: "left",  size: 10 },
   mailingAddr: { left: 1.45, top: 2.12, w: 3.5,  align: "left",  size: 10 },
   memo:        { left: 0.80, top: 2.90, w: 3.6,  align: "left",  size: 9 },
 
@@ -161,8 +161,8 @@ function renderOverlay(data) {
 
   const bank = data.bankAccount || "Huntington Bank";
 
-  // check face
-  layer.appendChild(el("ov", POS.checkNo, data.checkNo || ""));
+  // check face — note: the check number is NOT printed (it's pre-printed
+  // on the stock); it's only stored with the check for the reports/register
   layer.appendChild(el("ov", POS.checkDate, dateStr));
   layer.appendChild(el("ov multiline", POS.payee, data.payee || ""));
   layer.appendChild(el("ov", POS.amountBox, "**" + amt));
