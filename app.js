@@ -15,6 +15,7 @@ const CATEGORIES = [
   "Office Supplies",
   "Payroll Expenses",
   "Professional Fees",
+  "Reimbursement",
   "Rent Expense",
   "Repairs and Maintenance",
   "Travel Expense",
