@@ -35,19 +35,19 @@ const POS = {
   stub1Addr:   { left: 0.90, top: 3.88, w: 3.2,  align: "left",  size: 10 },
   stub1Memo:   { left: 3.35, top: 4.02, w: 2.4,  align: "left",  size: 10 },
   stub1Date:   { left: 5.90, top: 3.88, w: 1.3,  align: "left",  size: 10 },
-  stub1Amount: { left: 6.85, top: 4.08, w: 1.5,  align: "right", size: 10 },
+  stub1Amount: { left: 6.65, top: 4.08, w: 1.5,  align: "right", size: 10 },
   stub1Bank:   { left: 0.20, top: 6.45, w: 2.0,  align: "left",  size: 10 },
   stub1Memo2:  { left: 2.30, top: 6.45, w: 2.6,  align: "left",  size: 10 },
-  stub1Amount2:{ left: 6.85, top: 6.45, w: 1.5,  align: "right", size: 10 },
+  stub1Amount2:{ left: 6.65, top: 6.45, w: 1.5,  align: "right", size: 10 },
 
   // --- Stub 2 (bottom panel) ---
   stub2Addr:   { left: 0.90, top: 7.38, w: 3.2,  align: "left",  size: 10 },
   stub2Memo:   { left: 3.35, top: 7.52, w: 2.4,  align: "left",  size: 10 },
   stub2Date:   { left: 5.90, top: 7.38, w: 1.3,  align: "left",  size: 10 },
-  stub2Amount: { left: 6.85, top: 7.58, w: 1.5,  align: "right", size: 10 },
+  stub2Amount: { left: 6.65, top: 7.58, w: 1.5,  align: "right", size: 10 },
   stub2Bank:   { left: 0.20, top: 9.95, w: 2.0,  align: "left",  size: 10 },
   stub2Memo2:  { left: 2.30, top: 9.95, w: 2.6,  align: "left",  size: 10 },
-  stub2Amount2:{ left: 6.85, top: 9.95, w: 1.5,  align: "right", size: 10 },
+  stub2Amount2:{ left: 6.65, top: 9.95, w: 1.5,  align: "right", size: 10 },
 };
 
 // ---- Helpers ----
